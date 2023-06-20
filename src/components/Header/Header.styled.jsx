@@ -10,7 +10,14 @@ export const TopMenu = styled.div`
   padding-bottom: 10px;
 `;
 
-export const ButtonContainer = styled.div`
+export const Navigation = styled.nav`
+  display: flex;
+`;
+
+export const AuthNav = styled.div`
+  display: flex;
+`;
+export const UserMenu = styled.div`
   display: flex;
 `;
 

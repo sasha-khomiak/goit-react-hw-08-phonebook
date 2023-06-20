@@ -17,7 +17,7 @@ import { authReducer } from './auth/authSlice';
 // middleware - для логгера консолі
 export const store = configureStore({
   reducer: {
-    contacts: contactsSlice.reducer,
+    // contacts: contactsSlice.reducer,
     filter: filterSlice.reducer,
     auth: authReducer,
   },

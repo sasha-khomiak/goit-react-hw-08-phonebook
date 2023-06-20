@@ -1,19 +1,25 @@
 import React from 'react';
 
-import { TopMenu, StyledNavLink, ButtonContainer } from './Header.styled';
+import {
+  TopMenu,
+  StyledNavLink,
+  Navigation,
+  AuthNav,
+  UserMenu,
+} from './Header.styled';
 
 const Header = () => {
   return (
     <TopMenu>
-      <ButtonContainer>
+      <Navigation>
         <StyledNavLink to="/">Main</StyledNavLink>
         <StyledNavLink to="/">Notes</StyledNavLink>
-      </ButtonContainer>
-      <ButtonContainer>
+      </Navigation>
+      <AuthNav>
         <StyledNavLink to="/register">Registration</StyledNavLink>
         <StyledNavLink to="login">LogIn</StyledNavLink>
-      </ButtonContainer>
-      <div>info</div>
+      </AuthNav>
+      <UserMenu>UserMenu</UserMenu>
     </TopMenu>
   );
 };
