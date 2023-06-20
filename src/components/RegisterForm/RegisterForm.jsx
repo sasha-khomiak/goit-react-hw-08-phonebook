@@ -45,6 +45,7 @@ const RegisterForm = () => {
 
   return (
     <Form onSubmit={onSubmitForm}>
+      <h2>Registration</h2>
       <Wrap>
         <Label>
           Name:

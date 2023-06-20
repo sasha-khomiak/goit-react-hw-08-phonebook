@@ -41,6 +41,7 @@ const LoginForm = () => {
 
   return (
     <Form onSubmit={onSubmitForm}>
+      <h2>Log In</h2>
       <Wrap>
         <Label>
           Email:
