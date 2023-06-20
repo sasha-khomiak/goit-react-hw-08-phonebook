@@ -1,8 +1,9 @@
-import { Form, Wrap, Label, Input, Button } from './LoginForm.styled';
+import { Form, Wrap, Label, Input, Button } from './RegisterForm.styled';
 import { useState } from 'react';
 
-const LoginForm = () => {
+const RegisterForm = () => {
   // локальні стейти для контрольованих інпутів у формі
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -10,6 +11,9 @@ const LoginForm = () => {
   // беремо нейм таргет  і світч-кейс оновлюємо значення стейту
   const handleChangeInput = e => {
     switch (e.currentTarget.name) {
+      case 'name':
+        setName(e.currentTarget.value);
+        break;
       case 'email':
         setEmail(e.currentTarget.value);
         break;
@@ -43,6 +47,16 @@ const LoginForm = () => {
     <Form onSubmit={onSubmitForm}>
       <Wrap>
         <Label>
+          Name:
+          <Input
+            type="name"
+            name="name"
+            required
+            value={name}
+            onChange={handleChangeInput}
+          />
+        </Label>
+        <Label>
           Email:
           <Input
             type="email"
@@ -63,9 +77,9 @@ const LoginForm = () => {
           />
         </Label>
       </Wrap>
-      <Button type="submit">Log In</Button>
+      <Button type="submit">Registration</Button>
     </Form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
