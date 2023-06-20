@@ -10,6 +10,8 @@ import { filterSlice } from './filterSlice';
 // підключення slice для наших контактів (а потім и з нього витягаємо редʼюсер коли вказуємо в store)
 import { contactsSlice } from './contactsSlice';
 
+import { authReducer } from './auth/authSlice';
+
 // створення store.
 // містить стейт-редюсер contacts і filter
 // middleware - для логгера консолі
@@ -17,6 +19,7 @@ export const store = configureStore({
   reducer: {
     contacts: contactsSlice.reducer,
     filter: filterSlice.reducer,
+    auth: authReducer,
   },
   //  logger
   middleware: getDefaultMiddleware => [...getDefaultMiddleware(), logger],
