@@ -8,7 +8,7 @@ import logger from 'redux-logger';
 import { filterSlice } from './filterSlice';
 
 // підключення slice для наших контактів (а потім и з нього витягаємо редʼюсер коли вказуємо в store)
-import { contactsSlice } from './contactsSlice';
+// import { contactsSlice } from './contactsSlice';
 
 import { authReducer } from './auth/authSlice';
 
@@ -18,7 +18,7 @@ import { authReducer } from './auth/authSlice';
 export const store = configureStore({
   reducer: {
     // contacts: contactsSlice.reducer,
-    filter: filterSlice.reducer,
+    // filter: filterSlice.reducer,
     auth: authReducer,
   },
   //  logger
