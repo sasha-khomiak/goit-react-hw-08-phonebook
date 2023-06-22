@@ -5,7 +5,7 @@ import MainPicture from '../images/68747470733a2f2f73332e616d617a6f6e6177732e636
 const HomeView = () => {
   return (
     <div>
-      <img src={MainPicture} />
+      <img src={MainPicture} alt="phone-picture" />
     </div>
   );
 };
