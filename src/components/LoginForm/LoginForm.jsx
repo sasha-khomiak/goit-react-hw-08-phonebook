@@ -1,7 +1,10 @@
+import { useDispatch } from 'react-redux';
 import { Form, Wrap, Label, Input, Button } from './LoginForm.styled';
 import { useState } from 'react';
+import authOperations from 'redux/auth/authOperations';
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   // локальні стейти для контрольованих інпутів у формі
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -25,18 +28,9 @@ const LoginForm = () => {
   // ....
   const onSubmitForm = e => {
     e.preventDefault();
-    // const newContact = {
-    //   id: nanoid(5),
-    //   email,
-    //   password,
-    // };
-    // if (checkNewNameRepeate(name)) {
-    //   alert(`${name} is already in contacts!`);
-    // } else {
-    //   dispatch(addContact(newContact));
-    //   setName('');
-    //   setPhone('');
-    // }
+    dispatch(authOperations.logIn({ email, password }));
+    setEmail('');
+    setPassword('');
   };
 
   return (

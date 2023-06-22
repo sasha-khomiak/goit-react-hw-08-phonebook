@@ -1,17 +1,32 @@
 import styled from 'styled-components';
 
-import { NavLink } from 'react-router-dom';
-
-export const TopMenu = styled.div`
+export const UserMenuContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  border-bottom: 1px dotted gray;
-  padding-bottom: 10px;
 `;
 
-export const StyledNavLink = styled(NavLink)`
-  /* width: 200px; */
+export const AvatarThumb = styled.div`
+  height: 50px;
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.16),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 1px 0px rgba(0, 0, 0, 0.12);
+`;
+
+export const Avatar = styled.img`
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+`;
+
+export const Greeting = styled.p`
+  font-weight: 700;
+`;
+
+export const StyledButton = styled.button`
   height: 40px;
   padding-left: 20px;
   padding-right: 20px;
@@ -45,9 +60,5 @@ export const StyledNavLink = styled(NavLink)`
     transform: scale(1.1);
   }
 
-  &.active {
-    background-color: orange;
-  }
-
-  margin-right: 20px;
+  margin-left: 20px;
 `;

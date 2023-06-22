@@ -1,25 +1,20 @@
 import React from 'react';
 
-import {
-  TopMenu,
-  StyledNavLink,
-  Navigation,
-  AuthNav,
-  UserMenu,
-} from './Header.styled';
+import Navigation from '../Navigation/Navigation';
+import AuthNav from 'components/AuthNav/AuthNav';
+import UserMenu from 'components/UserMenu/UserMenu';
+
+import { TopMenu } from './Header.styled';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 
 const Header = () => {
+  const isLogedIn = useSelector(selectIsLoggedIn);
+
   return (
     <TopMenu>
-      <Navigation>
-        <StyledNavLink to="/">Main</StyledNavLink>
-        <StyledNavLink to="/">Notes</StyledNavLink>
-      </Navigation>
-      <AuthNav>
-        <StyledNavLink to="/register">Registration</StyledNavLink>
-        <StyledNavLink to="login">LogIn</StyledNavLink>
-      </AuthNav>
-      <UserMenu>UserMenu</UserMenu>
+      <Navigation />
+      {isLogedIn ? <UserMenu /> : <AuthNav />}
     </TopMenu>
   );
 };
