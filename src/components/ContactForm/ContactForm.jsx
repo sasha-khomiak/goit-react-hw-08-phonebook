@@ -12,10 +12,10 @@ import { Input, Label, Button, Form, Wrap } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 
 // седектор вибору контакта
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 
 // функція формування екшена додавання контакту
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/contactsOperations';
 
 // наш функціональний компонент
 export default function ContactForm() {
@@ -55,9 +55,9 @@ export default function ContactForm() {
   const onSubmitForm = e => {
     e.preventDefault();
     const newContact = {
-      id: nanoid(5),
+      // id: nanoid(5),
       name,
-      phone,
+      number: phone,
     };
     if (checkNewNameRepeate(name)) {
       alert(`${name} is already in contacts!`);

@@ -7,7 +7,7 @@ const Navigation = () => {
   return (
     <NavigationContainer>
       <StyledNavLink to="/">Main</StyledNavLink>
-      <StyledNavLink to="/">Notes</StyledNavLink>
+      <StyledNavLink to="/contacts">Contacts</StyledNavLink>
     </NavigationContainer>
   );
 };

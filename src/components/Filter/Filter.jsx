@@ -6,10 +6,10 @@ import { Input } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
 
 // функція формування екшен перезапису фільтра в стейті
-import { editFilter } from 'redux/filterSlice';
+import { editFilter } from 'redux/filter/filterSlice';
 
 // селектор для фільтра
-import { selectFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/contacts/contactsSelectors';
 
 // компонент Filter
 const Filter = () => {

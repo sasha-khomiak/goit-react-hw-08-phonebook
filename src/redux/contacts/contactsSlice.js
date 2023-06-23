@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // імпортуємо операції роботи з сервером
-import { fetchContacts, addContact, deleteContact } from './operations';
+import { fetchContacts, addContact, deleteContact } from './contactsOperations';
 
 // винесені функції повторюваного коду
 //  пендінг
@@ -59,3 +59,5 @@ export const contactsSlice = createSlice({
     [deleteContact.rejected]: handleRejected,
   },
 });
+
+export const contactsReducer = contactsSlice.reducer;

@@ -6,20 +6,21 @@ import { Ul, Li, Name, Button } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 
 // функція формування екщена для видалення контакту
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 
 // селектори для стейту стану контактів (завантаження, відфільтрований результат, помилка)
 import {
   selectIsLoading,
   selectError,
   selectFilteredContacts,
-} from 'redux/selectors';
+  selectContacts,
+} from 'redux/contacts/contactsSelectors';
 
 // useEffect для оновлення сontacts при їх зміні
 import { useEffect } from 'react';
 
 // операція отримання контатків
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 // наш компонент
 const ContactList = () => {
@@ -51,7 +52,7 @@ const ContactList = () => {
           {filteredContacts.map(item => {
             return (
               <Li key={item.id}>
-                <Name>{item.name}: </Name> <p>{item.phone}</p>
+                <Name>{item.name}: </Name> <p>{item.number}</p>
                 <Button
                   type="button"
                   onClick={() => dispatch(deleteContact(item.id))}
