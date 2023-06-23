@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // бібліотека автогенерування ключа
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 // стилізовані компоненти
 import { Input, Label, Button, Form, Wrap } from './ContactForm.styled';

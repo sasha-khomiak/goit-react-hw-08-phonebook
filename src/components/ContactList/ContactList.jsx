@@ -13,7 +13,6 @@ import {
   selectIsLoading,
   selectError,
   selectFilteredContacts,
-  selectContacts,
 } from 'redux/contacts/contactsSelectors';
 
 // useEffect для оновлення сontacts при їх зміні
@@ -22,12 +21,15 @@ import { useEffect } from 'react';
 // операція отримання контатків
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 
+import authOperations from 'redux/auth/authOperations';
+
 // наш компонент
 const ContactList = () => {
   const dispatch = useDispatch();
 
   // оновлення сontacts при їх зміні
   useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
     dispatch(fetchContacts());
   }, [dispatch]);
 

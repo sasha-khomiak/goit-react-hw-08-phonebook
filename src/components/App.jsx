@@ -4,9 +4,18 @@ import RegisterView from 'pages/RegisterView';
 import LoginView from 'pages/LoginView';
 import ContactsView from 'pages/ContactsView';
 import SharedLayout from './SharedLayout/SharedLayout';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import authOperations from 'redux/auth/authOperations';
 
 // функціональний компонент. головний додаток, маршрутизація
 export function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>

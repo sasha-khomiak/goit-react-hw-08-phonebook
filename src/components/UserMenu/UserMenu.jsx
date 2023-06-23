@@ -20,9 +20,9 @@ const UserMenu = () => {
   const userName = useSelector(authSelectors.selectUserName);
   return (
     <UserMenuContainer>
-      {/* <AvatarThumb>
+      <AvatarThumb>
         <Avatar src={UserIco} alt="avatar" />
-      </AvatarThumb> */}
+      </AvatarThumb>
       <Greeting>Welcome, {userName}</Greeting>
       <StyledButton
         type="button"
