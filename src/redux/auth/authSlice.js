@@ -30,6 +30,15 @@ const authSlise = createSlice({
     // [authOperations.logIn.rejected] (state, action) {},
 
     //Log-Out
+    // [authOperations.logIn.pending] (state, action) {},
+    [authOperations.logOut.fulfilled](state, action) {
+      state.user = { name: '', email: '' };
+      state.token = '';
+      state.isLoggedIn = false;
+      // або
+      // state = initialState;
+    },
+    // [authOperations.logIn.rejected] (state, action) {},
   },
 });
 

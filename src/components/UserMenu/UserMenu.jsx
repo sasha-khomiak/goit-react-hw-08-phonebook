@@ -1,7 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import authSelectors from '../../redux/auth/authSelectors';
+
+import authOperations from 'redux/auth/authOperations';
 
 import {
   StyledButton,
@@ -14,6 +16,7 @@ import {
 import UserIco from '../../images/user-ico.png';
 
 const UserMenu = () => {
+  const dispatch = useDispatch();
   const userName = useSelector(authSelectors.selectUserName);
   return (
     <UserMenuContainer>
@@ -21,7 +24,12 @@ const UserMenu = () => {
         <Avatar src={UserIco} alt="avatar" />
       </AvatarThumb>
       <Greeting>Welcome, {userName}</Greeting>
-      <StyledButton type="button">Log Out</StyledButton>
+      <StyledButton
+        type="button"
+        onClick={() => dispatch(authOperations.logOut())}
+      >
+        Log Out
+      </StyledButton>
     </UserMenuContainer>
   );
 };
