@@ -7,7 +7,8 @@ import authOperations from 'redux/auth/authOperations';
 
 import SharedLayout from './SharedLayout/SharedLayout';
 
-import PrivateRoute from './PrivateRoute';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 import { lazy } from 'react';
 
@@ -36,18 +37,27 @@ export function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomeView />} />
-          <Route path="register" element={<RegisterView />} />
-          <Route path="login" element={<LoginView />} />
-          <Route path="contacts" element={<ContactsView />} />
-
-          {/* <PrivateRoute path="contacts">
-            <ContactsView />
-          </PrivateRoute> */}
-
-          {/* <Route
-            path="contact"
-            element={<PrivateRoute el={<ContactsView />} />}
-          /> */}
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                conponent={RegisterView}
+                redirectTo="/contacts"
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute conponent={LoginView} redirectTo="/contacts" />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute conponent={ContactsView} redirectTo="/login" />
+            }
+          />
 
           <Route path="*" element={<HomeView />} />
         </Route>
