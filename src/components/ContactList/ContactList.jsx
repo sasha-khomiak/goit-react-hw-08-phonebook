@@ -22,7 +22,7 @@ import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 
 // операції авторизації
-import authOperations from 'redux/auth/authOperations';
+// import authOperations from 'redux/auth/authOperations';
 
 // наш компонент
 const ContactList = () => {
@@ -30,7 +30,7 @@ const ContactList = () => {
 
   // оновлення сontacts при їх зміні
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
+    // dispatch(authOperations.fetchCurrentUser());
     dispatch(fetchContacts());
   }, [dispatch]);
 

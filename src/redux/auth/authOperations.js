@@ -51,9 +51,10 @@ const fetchCurrentUser = createAsyncThunk(
     // console.log('thunkApi.getState()', thunkAPI.getState());
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    if (persistedToken === null || persistedToken === '') {
+    if (!persistedToken) {
+      // if (persistedToken === null || persistedToken === '') {
       // console.log('There is no persistedToken');
-      return thunkAPI.rejectWithValue();
+      return thunkAPI.rejectWithValue('Oops');
       // return state;
     }
     token.set(persistedToken);
@@ -62,7 +63,9 @@ const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       // console.log('data', data);
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
