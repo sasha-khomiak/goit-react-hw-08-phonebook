@@ -1,7 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { Form, Wrap, Label, Input, Button } from './LoginForm.styled';
 import { useState } from 'react';
+
+// операції авторизації
 import authOperations from 'redux/auth/authOperations';
+
+import { Form, Wrap, Label, Input, Button } from './LoginForm.styled';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -25,7 +28,7 @@ const LoginForm = () => {
   };
 
   // при сабміті форми прівент дефолт
-  // ....
+  // відправляємо обʼєкт імейду і пароля, скидаємо форму
   const onSubmitForm = e => {
     e.preventDefault();
     dispatch(authOperations.logIn({ email, password }));

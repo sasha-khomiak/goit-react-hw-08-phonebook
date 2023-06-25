@@ -1,15 +1,23 @@
+// маршрутизація
 import { Route, Routes } from 'react-router-dom';
 
+// диспатч для перезапису стейту
 import { useDispatch } from 'react-redux';
+
+// хук useEffect
 import { useEffect } from 'react';
 
+// операції авторизації (при завантажені компонента будемо фетчати юзера, якщо токен є в локадсторедж)
 import authOperations from 'redux/auth/authOperations';
 
+// щаред лейаут для спільної шапки на всіх вклалених роутах
 import SharedLayout from './SharedLayout/SharedLayout';
 
+//  приватні і рестріктед роуд
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
+// лейзі і прогонка компонентів через завантаження лейзі
 import { lazy } from 'react';
 
 const HomeView = lazy(() => import('../pages/HomeView'));
@@ -28,6 +36,7 @@ const ContactsView = lazy(() => import('../pages/ContactsView'));
 export function App() {
   const dispatch = useDispatch();
 
+  //витягаємо токен з локадсторедж і "логінимо" юзера
   useEffect(() => {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);

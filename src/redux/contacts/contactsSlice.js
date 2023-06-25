@@ -23,7 +23,8 @@ const initialState = {
 };
 
 // створюємо Slice для 'contacts'
-// ред'юсери у форматі extraReducers з трьома станами запиту на кожну операцію
+// ред'юсери у форматі extraReducers з трьома станами запиту на кожну операцію (pending,fulfilled,rejected)
+// новий синтаксис builder і старий синтаксис (закоментований)
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
@@ -40,7 +41,6 @@ export const contactsSlice = createSlice({
       .addCase(fetchContacts.rejected, (state, action) =>
         handleRejected(state, action)
       )
-
       // додавання контакту
       .addCase(addContact.pending, (state, action) => handlePending(state))
       .addCase(addContact.fulfilled, (state, action) => {
@@ -100,4 +100,5 @@ export const contactsSlice = createSlice({
   // },
 });
 
+// експорт редʼюсера для стор
 export const contactsReducer = contactsSlice.reducer;

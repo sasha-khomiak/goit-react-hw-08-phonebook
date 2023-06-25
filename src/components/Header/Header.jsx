@@ -10,7 +10,7 @@ import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 
 const Header = () => {
   const isLogedIn = useSelector(selectIsLoggedIn);
-
+  // рендеримо верхнє мен. в залежності чи залогінений юзер
   return (
     <TopMenu>
       <Navigation />

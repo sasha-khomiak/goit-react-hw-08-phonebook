@@ -2,16 +2,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // підключення логгера (для виводу в консолі попереднього стану стора, екшена, і наступного стану стора)
+// відключив, щоб в фінальному варіанті консоль не засмічувати
 // import logger from 'redux-logger';
 
+// persistStore для створення персісторного стора для апп
 import { persistStore } from 'redux-persist';
 
-// підключення authReducer, contactsReducer, filterReducer
+// підключення persistedAuthReducer, contactsReducer, filterReducer
 import { contactsReducer } from './contacts/contactsSlice';
 import { filterReducer } from './filter/filterSlice';
-// import { authReducer } from './auth/authSlice';
 import { persistedAuthReducer } from './auth/authSlice';
 
+//  для прибирання помилки з консолі
 import {
   FLUSH,
   REHYDRATE,
@@ -22,7 +24,7 @@ import {
 } from 'redux-persist';
 
 // створення store.
-// містить стейт-редюсер contacts і filter
+// містить стейт-редюсер авторизації, contacts і filter
 // middleware - для логгера консолі
 export const store = configureStore({
   reducer: {
@@ -30,9 +32,9 @@ export const store = configureStore({
     contacts: contactsReducer,
     filter: filterReducer,
   },
-  // 1 logger
+  // 1 додаємо logger в консоль
   // middleware: getDefaultMiddleware => [...getDefaultMiddleware(), logger],
-  // // 2 logger + error debugger
+  // // 2 додаємо logger в консоль + робимо error debugger
   // middleware: getDefaultMiddleware => [
   //   ...getDefaultMiddleware({
   //     serializableCheck: {
@@ -41,7 +43,7 @@ export const store = configureStore({
   //   }),
   //   logger,
   // ],
-  // // 3 error debugger
+  // // 3 робимо error debugger
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
@@ -51,4 +53,5 @@ export const store = configureStore({
   ],
 });
 
+// persistor для App.js
 export const persistor = persistStore(store);

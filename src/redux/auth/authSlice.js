@@ -1,15 +1,22 @@
+// імпорт бібліотеки створення слайсу
 import { createSlice } from '@reduxjs/toolkit';
+
+// імпортуємо нащі операції запиту з сервера
 import authOperations from './authOperations';
 
+//storage і persistReducer для прогонки через мідлвер персістор для синхронізації із localStorage
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
+// початковий стан
 const initialState = {
   user: { name: '', email: '' },
   token: null,
   isLoggedIn: false,
 };
 
+// слайс автентифікації
+// редʼ.сери за новим синтаксисом білдера і старим синтаксисом (закоментовано)
 const authSlise = createSlice({
   name: 'auth',
   initialState,
@@ -17,13 +24,11 @@ const authSlise = createSlice({
     builder
       // новий синтаксис через builder
       // registration
-      .addCase(authOperations.register.pending, (state, action) => {})
       .addCase(authOperations.register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(authOperations.register.rejected, (state, action) => {})
       //Log-In
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -35,8 +40,6 @@ const authSlise = createSlice({
         state.user = { name: '', email: '' };
         state.token = '';
         state.isLoggedIn = false;
-        // або
-        // state = initialState;
       })
       //set Current User
       .addCase(authOperations.fetchCurrentUser.fulfilled, (state, action) => {
@@ -87,12 +90,15 @@ const authSlise = createSlice({
   // },
 });
 
-export const authReducer = authSlise.reducer;
+// редʼюсер
+const authReducer = authSlise.reducer;
 
+// налаштування персіста
 const persistConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
 };
 
+// проганяємо редʼюс через персіст (мідлвер для синхронізації з докалсторедж)
 export const persistedAuthReducer = persistReducer(persistConfig, authReducer);

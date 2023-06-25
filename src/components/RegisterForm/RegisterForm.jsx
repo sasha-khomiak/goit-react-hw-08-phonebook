@@ -1,8 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { Form, Wrap, Label, Input, Button } from './RegisterForm.styled';
 import { useState } from 'react';
 
+// операції авторизації
 import authOperations from 'redux/auth/authOperations';
+
+import { Form, Wrap, Label, Input, Button } from './RegisterForm.styled';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const RegisterForm = () => {
   };
 
   // при сабміті форми прівент дефолт
-  // ....
+  // відправляємо на операції обробки оюʼєкт нового користувача і скидаємо форму
   const onSubmitForm = e => {
     e.preventDefault();
     dispatch(authOperations.register({ name, email, password }));
