@@ -21,6 +21,7 @@ import { useEffect } from 'react';
 // операція отримання контатків
 import { fetchContacts } from 'redux/contacts/contactsOperations';
 
+// операції авторизації
 import authOperations from 'redux/auth/authOperations';
 
 // наш компонент
