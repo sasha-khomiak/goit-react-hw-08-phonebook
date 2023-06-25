@@ -8,12 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 // функція формування екщена для видалення контакту
 import { deleteContact } from 'redux/contacts/contactsOperations';
 
-// селектори для стейту стану контактів (завантаження, відфільтрований результат, помилка)
+// селектори для стейту стану контактів (завантаження, контакти, помилка)
 import {
   selectIsLoading,
   selectError,
-  selectFilteredContacts,
+  selectContacts,
 } from 'redux/contacts/contactsSelectors';
+
+// селектор для фільтра
+import { selectFilter } from 'redux/filter/filterSelectors';
 
 // useEffect для оновлення сontacts при їх зміні
 import { useEffect } from 'react';
@@ -38,8 +41,13 @@ const ContactList = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
+  // контакти, фільтр
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectFilter);
   // відфільтровані контакти
-  const filteredContacts = useSelector(selectFilteredContacts);
+  const filteredContacts = contacts.filter(item =>
+    item.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase().trim())
+  );
 
   // верстка компонента
   // Якщо завантаження - Loading tasks...

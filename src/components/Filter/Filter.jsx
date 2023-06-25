@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { editFilter } from 'redux/filter/filterSlice';
 
 // селектор для фільтра
-import { selectFilter } from 'redux/contacts/contactsSelectors';
+import { selectFilter } from 'redux/filter/filterSelectors';
 
 // компонент Filter
 const Filter = () => {
